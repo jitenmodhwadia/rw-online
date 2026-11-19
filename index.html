@@ -83,6 +83,9 @@
   .hero h1{font-size:clamp(30px,8vw,46px); margin:6px 0 2px}
   .time{display:inline-flex; align-items:center; gap:8px; margin:8px 0 6px; background:var(--navy); color:#fff; border-radius:999px; padding:8px 18px; font:700 clamp(16px,4.4vw,20px)/1.2 Montserrat,sans-serif}
   .time small{font-weight:600; opacity:.8; font-size:.72em; letter-spacing:.08em}
+  .agenda{display:flex; justify-content:center; gap:8px; margin:4px auto 4px; max-width:460px}
+  .agenda div{flex:1; background:#fff; border:1px solid var(--line); border-radius:12px; padding:7px 8px; font-size:13px; line-height:1.35; color:var(--muted)}
+  .agenda b{display:block; color:var(--gold-dk); font-size:16px}
   .hero .sub{color:var(--muted); max-width:540px; margin:6px auto 0}
   .local{font-size:13.5px; color:var(--gold-dk); margin-top:6px; min-height:1em}
 
@@ -248,6 +251,7 @@
     <div class="kicker">Richwealth Online</div>
     <h1 data-t="h1"></h1>
     <div class="time"><span class="num">3:00 – 5:00 PM</span> <small>IST</small></div>
+    <div class="agenda"><div><b class="num">3:00</b><span data-t="pl1"></span></div><div><b class="num">3:15</b><span data-t="pl2"></span></div></div>
     <p class="sub" data-t="sub"></p>
     <div class="local" id="local"></div>
   </div>
@@ -376,7 +380,7 @@ en:{
   t_kyc:["KYC & payout help","Re-KYC, documents, TDS and payout questions – answered live."],
   t_qa:["…and many more","Open Q&A every day. Bring your family, bring your questions."],
   how_h:"How to join", how_l:"It takes less than a minute.",
-  s:[["Open this page between 3 and 5 PM","Bookmark online.richwealth.in or add the daily reminder to your calendar."],
+  s:[["Open this page between 3 and 5 PM","3:00 – today's topics, 3:15 – live discussion. Bookmark online.richwealth.in or add the daily reminder."],
      ["Tap “Join the live session”","It opens Google Meet. On a phone, use the Meet app or your browser."],
      ["Listen, then ask","Unmute or type in the chat – our team answers you live."],
      ["Take the next step","Want details for your family? Ask for a personal call with your Relationship Manager."]],
@@ -418,7 +422,7 @@ hi:{
   t_kyc:["KYC और भुगतान सहायता","Re-KYC, दस्तावेज़, TDS और भुगतान से जुड़े सवाल – लाइव जवाब।"],
   t_qa:["…और भी बहुत कुछ","हर दिन खुले सवाल-जवाब। परिवार को साथ लाएँ, सवाल साथ लाएँ।"],
   how_h:"कैसे जुड़ें", how_l:"एक मिनट से भी कम समय लगता है।",
-  s:[["3 से 5 बजे के बीच यह पेज खोलें","online.richwealth.in को बुकमार्क करें या रोज़ का रिमाइंडर कैलेंडर में जोड़ें।"],
+  s:[["3 से 5 बजे के बीच यह पेज खोलें","3:00 – आज के विषय, 3:15 – लाइव चर्चा। online.richwealth.in बुकमार्क करें या रोज़ का रिमाइंडर जोड़ें।"],
      ["“लाइव सत्र से जुड़ें” दबाएँ","Google Meet खुलेगा। फ़ोन पर Meet ऐप या ब्राउज़र इस्तेमाल करें।"],
      ["सुनें, फिर पूछें","माइक चालू करें या चैट में लिखें – हमारी टीम लाइव जवाब देगी।"],
      ["अगला कदम उठाएँ","परिवार के लिए विस्तार से जानना है? अपने रिलेशनशिप मैनेजर से निजी कॉल माँगें।"]],
@@ -460,7 +464,7 @@ gu:{
   t_kyc:["KYC અને ચુકવણી મદદ","Re-KYC, દસ્તાવેજો, TDS અને ચુકવણીના પ્રશ્નો – લાઇવ જવાબ."],
   t_qa:["…અને ઘણું બધું","દરરોજ ખુલ્લા પ્રશ્ન-જવાબ. પરિવારને સાથે લાવો, પ્રશ્નો સાથે લાવો."],
   how_h:"કેવી રીતે જોડાવું", how_l:"એક મિનિટથી પણ ઓછો સમય લાગે છે.",
-  s:[["3 થી 5 વાગ્યા વચ્ચે આ પેજ ખોલો","online.richwealth.in બુકમાર્ક કરો અથવા રોજનું રિમાઇન્ડર કેલેન્ડરમાં ઉમેરો."],
+  s:[["3 થી 5 વાગ્યા વચ્ચે આ પેજ ખોલો","3:00 – આજના વિષયો, 3:15 – લાઇવ ચર્ચા. online.richwealth.in બુકમાર્ક કરો અથવા રોજનું રિમાઇન્ડર ઉમેરો."],
      ["“લાઇવ સત્રમાં જોડાઓ” દબાવો","Google Meet ખુલશે. ફોન પર Meet એપ અથવા બ્રાઉઝર વાપરો."],
      ["સાંભળો, પછી પૂછો","માઇક ચાલુ કરો અથવા ચેટમાં લખો – અમારી ટીમ લાઇવ જવાબ આપશે."],
      ["આગળનું પગલું ભરો","પરિવાર માટે વિગતે જાણવું છે? તમારા રિલેશનશિપ મેનેજર સાથે અંગત કૉલ માંગો."]],
@@ -495,6 +499,8 @@ Object.assign(T.en, {
   d_hint:"Please join with the same name – <b>{n}</b> – so our team can let you in.",
   d_closed_h:"Thank you, {n}!", d_closed_p:"You are registered. The session runs every day 3:00–5:00 PM (IST) – the join button opens here 15 minutes before it starts.",
   d_more:"See what we discuss", join_meet:"Join Google Meet now",
+  pl1:"Today's topics – what we will cover", pl2:"Live discussion & your questions (till 5 PM)",
+  lbl_topics:"Starting now – today's topics on screen. Live discussion begins at 3:15 PM.",
   join_reg:"Register to join", reg_ok:"✓ Registered as {n}", join_wait:"Join opens at 2:45 PM IST"
 });
 Object.assign(T.hi, {
@@ -507,6 +513,8 @@ Object.assign(T.hi, {
   d_hint:"कृपया इसी नाम – <b>{n}</b> – से जुड़ें ताकि हमारी टीम आपको अंदर ले सके।",
   d_closed_h:"धन्यवाद, {n}!", d_closed_p:"आपका रजिस्ट्रेशन हो गया। सत्र रोज़ 3:00–5:00 PM (IST) होता है – शुरू होने से 15 मिनट पहले यहाँ जुड़ने का बटन खुलेगा।",
   d_more:"देखें हम किन विषयों पर बात करते हैं", join_meet:"अभी Google Meet से जुड़ें",
+  pl1:"आज के विषय – हम क्या कवर करेंगे", pl2:"लाइव चर्चा और आपके सवाल (5 बजे तक)",
+  lbl_topics:"शुरू हो गया – स्क्रीन पर आज के विषय। लाइव चर्चा 3:15 PM से।",
   join_reg:"जुड़ने के लिए रजिस्टर करें", reg_ok:"✓ {n} के नाम से रजिस्टर्ड", join_wait:"जुड़ने का बटन 2:45 PM IST पर खुलेगा"
 });
 Object.assign(T.gu, {
@@ -519,6 +527,8 @@ Object.assign(T.gu, {
   d_hint:"કૃપા કરી આ જ નામ – <b>{n}</b> – થી જોડાજો, જેથી અમારી ટીમ તમને અંદર લઈ શકે.",
   d_closed_h:"આભાર, {n}!", d_closed_p:"તમારું રજિસ્ટ્રેશન થઈ ગયું. સત્ર દરરોજ 3:00–5:00 PM (IST) હોય છે – શરૂ થવાના 15 મિનિટ પહેલાં અહીં જોડાવાનું બટન ખુલશે.",
   d_more:"અમે શેની ચર્ચા કરીએ છીએ તે જુઓ", join_meet:"હમણાં Google Meet માં જોડાઓ",
+  pl1:"આજના વિષયો – અમે શું આવરી લઈશું", pl2:"લાઇવ ચર્ચા અને તમારા પ્રશ્નો (5 વાગ્યા સુધી)",
+  lbl_topics:"શરૂ થયું – સ્ક્રીન પર આજના વિષયો. લાઇવ ચર્ચા 3:15 PM થી.",
   join_reg:"જોડાવા માટે રજિસ્ટર કરો", reg_ok:"✓ {n} તરીકે રજિસ્ટર્ડ", join_wait:"જોડાવાનું બટન 2:45 PM IST પર ખુલશે"
 });
 
@@ -586,7 +596,7 @@ function tick(){
   const st = $('status');
   st.classList.toggle('live', live || early);
   $('badgeTxt').textContent = live ? t.live : early ? t.soon : t.next;
-  if (live) $('slabel').textContent = t.lbl_live;
+  if (live) $('slabel').textContent = p.mins < START_MIN + 15 ? t.lbl_topics : t.lbl_live;
   else {
     const s = nextStartMs(now), left = Math.max(0, Math.floor((s - now)/1000));
     $('slabel').textContent = p.mins < START_MIN ? t.lbl_today : t.lbl_tom;
