@@ -41,6 +41,34 @@
   .gatebox button{display:block; width:100%; margin-top:10px; padding:14px; border-radius:10px; border:1.5px solid var(--gold); background:#fff; color:var(--navy); cursor:pointer; font:700 18px/1.2 "Noto Serif Gujarati","Noto Serif Devanagari",Montserrat,sans-serif}
   .gatebox button:hover,.gatebox button:focus{background:var(--gold); color:#fff; outline:none}
 
+  /* registration screen (every visit) */
+  .entry{position:fixed; inset:0; z-index:40; background:linear-gradient(180deg,var(--cream),var(--cream2)); overflow-y:auto; display:flex; justify-content:center; align-items:flex-start; padding:16px}
+  .entry[hidden]{display:none}
+  .ebox{width:100%; max-width:430px; margin:auto 0; background:#fff; border:1.5px solid var(--gold); border-radius:18px; padding:18px 18px 16px; box-shadow:0 10px 40px rgba(138,109,31,.15)}
+  .ebox .top{display:flex; justify-content:space-between; align-items:center; gap:8px}
+  .ebox .top img{width:140px; height:auto}
+  .ebox h2{font-size:clamp(21px,5.6vw,25px); text-align:center; margin:12px 0 4px}
+  .ebox .esub{color:var(--muted); font-size:14.5px; text-align:center; margin:0 0 12px}
+  .etime{display:block; width:max-content; margin:0 auto 12px; background:var(--navy); color:#fff; border-radius:999px; padding:5px 14px; font:700 14px/1.2 Montserrat,sans-serif}
+  .fld{margin-top:11px}
+  .fld label{display:block; font-weight:700; font-size:14px; color:var(--navy); margin-bottom:4px}
+  .fld input,.fld select{width:100%; font:500 16px/1.3 var(--body); padding:12px; border:1.5px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink)}
+  .fld input:focus,.fld select:focus{outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(176,141,46,.15)}
+  .fld.bad input,.fld.bad select{border-color:#b3261e; background:#fdf1f0}
+  .fld .err{display:none; color:#b3261e; font-size:12.5px; margin-top:3px}
+  .fld.bad .err{display:block}
+  .phone{display:grid; grid-template-columns:96px 1fr; gap:8px}
+  .hp{position:absolute; left:-5000px; width:1px; height:1px; opacity:0}
+  .epriv{font-size:12px; color:var(--muted); margin:10px 0 0; text-align:center}
+  .emsg{display:none; margin-top:10px; padding:10px 12px; border-radius:10px; font-size:14px; background:#fdf1f0; color:#b3261e}
+  .emsg.show{display:block}
+  .btn[disabled]{opacity:.6; cursor:wait}
+  .done{text-align:center}
+  .done .tick{width:56px; height:56px; border-radius:50%; background:#e8f3e9; color:var(--green); display:grid; place-items:center; margin:8px auto 4px; font-size:30px; font-weight:800}
+  .done p{color:var(--muted); font-size:14.5px; margin:6px 0 0}
+  .namehint{background:var(--cream); border:1px dashed var(--gold); border-radius:10px; padding:10px 12px; font-size:13.5px; color:var(--navy); margin-top:12px; text-align:left}
+  .regok{display:inline-block; margin-top:8px; font-size:13px; font-weight:700; color:var(--green)}
+
   /* app bar */
   .appbar{position:sticky; top:0; z-index:20; background:rgba(250,246,236,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
   .appbar .in{max-width:720px; margin:0 auto; padding:8px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px}
@@ -144,6 +172,70 @@
   </div>
 </div>
 
+<div class="entry" id="entry" hidden>
+  <div class="ebox">
+    <div class="top">
+      <img class="elogo" src="logo-en.png" alt="Richwealth">
+      <div class="langbar" role="group" aria-label="Language">
+        <button type="button" data-lang="gu">ગુ</button><button type="button" data-lang="hi">हि</button><button type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+    <form id="regForm" novalidate>
+      <h2 data-t="r_h"></h2>
+      <p class="esub" data-t="r_sub"></p>
+      <span class="etime num">3:00 – 5:00 PM IST</span>
+      <div class="fld" id="f_name">
+        <label for="r_name" data-t="r_name"></label>
+        <input id="r_name" autocomplete="name" maxlength="60">
+        <div class="err" data-t="e_name"></div>
+      </div>
+      <div class="fld" id="f_mob">
+        <label for="r_mob" data-t="r_mob"></label>
+        <div class="phone">
+          <select id="r_cc" aria-label="Country code">
+            <option value="91">+91 IN</option><option value="1">+1 US/CA</option><option value="44">+44 UK</option>
+            <option value="971">+971 UAE</option><option value="966">+966 SA</option><option value="974">+974 QA</option>
+            <option value="968">+968 OM</option><option value="965">+965 KW</option><option value="973">+973 BH</option>
+            <option value="61">+61 AU</option><option value="64">+64 NZ</option><option value="65">+65 SG</option>
+            <option value="60">+60 MY</option><option value="66">+66 TH</option><option value="852">+852 HK</option>
+            <option value="254">+254 KE</option><option value="255">+255 TZ</option><option value="256">+256 UG</option>
+            <option value="27">+27 ZA</option><option value="49">+49 DE</option><option value="33">+33 FR</option>
+            <option value="31">+31 NL</option><option value="353">+353 IE</option><option value="977">+977 NP</option>
+          </select>
+          <input id="r_mob" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="15" placeholder="98XXXXXXXX">
+        </div>
+        <div class="err" data-t="e_mob"></div>
+      </div>
+      <div class="fld" id="f_city">
+        <label for="r_city" data-t="r_city"></label>
+        <input id="r_city" autocomplete="address-level2" maxlength="50">
+        <div class="err" data-t="e_city"></div>
+      </div>
+      <div class="fld" id="f_occ">
+        <label for="r_occ" data-t="r_occ"></label>
+        <select id="r_occ"></select>
+        <input id="r_occo" maxlength="50" style="margin-top:8px" hidden>
+        <div class="err" data-t="e_occ"></div>
+      </div>
+      <input class="hp" id="r_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="emsg" id="r_msg"></div>
+      <button class="btn btn-join" id="r_go" type="submit"><span data-t="r_go"></span></button>
+      <p class="epriv" data-t="r_priv"></p>
+    </form>
+    <div class="done" id="regDone" hidden>
+      <div class="tick">✓</div>
+      <h2 id="d_h"></h2>
+      <p id="d_p"></p>
+      <a class="btn btn-join" id="d_join" target="_blank" rel="noopener" hidden>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15 8.5V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1.5l5.3 3.2a1 1 0 0 0 1.5-.86V6.16a1 1 0 0 0-1.5-.86z"/></svg>
+        <span data-t="join_meet"></span>
+      </a>
+      <div class="namehint" id="d_hint" hidden></div>
+      <button class="btn btn-ghost" id="d_close" type="button"><span data-t="d_more"></span></button>
+    </div>
+  </div>
+</div>
+
 <div class="appbar"><div class="in">
   <img id="logo" src="logo-en.png" alt="Richwealth">
   <div class="langbar" role="group" aria-label="Language">
@@ -183,6 +275,7 @@
       </a>
     </div>
     <p class="hint" data-t="hint"></p>
+    <span class="regok" id="regok" hidden></span>
   </div>
 
   <section>
@@ -238,11 +331,13 @@
 
 <script>
 /* ===================== CONFIG ===================== */
-// Google Meet link of the daily session (richwealth214 Workspace). Paste the fixed link here.
-const MEET_URL = "https://meet.google.com/tfy-imoe-xmp";   // daily recurring event "Richwealth Online (3-5 PM IST)" on richwealth214, created 19-Nov-2026
+// Apps Script web app (richwealth214). Every visitor registers here; the Meet link comes back ONLY
+// from the backend, and only 15 min before / during 3–5 PM IST. Empty + localhost = preview mode.
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbw4bofzC7QcmtDZHfrRv0KHaekkarOC-bB_W-uk4oIIpEGZ0lpIlTIz7-SC1mHBRFKO/exec";
+let MEET_URL = "";                          // filled after registration
 const WA_NUMBER = "919913121121";           // reminders / questions
 const START_MIN = 15*60, END_MIN = 17*60;   // 3:00 PM – 5:00 PM IST, every day
-const OPEN_EARLY = 10;                       // "join" turns live 10 min before
+const OPEN_EARLY = 15;                       // link is given 15 min before (same as backend)
 /* ================================================== */
 
 const ICONS = {
@@ -268,7 +363,7 @@ en:{
   hrs:"hours", min:"minutes", sec:"seconds",
   join:"Join the live session", join_s:"Join", join_wa:"Get today's joining link on WhatsApp",
   cal:"Add to calendar", remind:"Daily reminder",
-  hint:"Free to join · no registration · every day including Sunday",
+  hint:"Free to join · quick registration · every day including Sunday",
   wa_join:"Hello Richwealth, please send me today's Richwealth Online (3–5 PM) joining link.",
   wa_remind:"Hello Richwealth, please add me to the daily reminder for Richwealth Online (3–5 PM).",
   topics_h:"What we discuss", topics_l:"Every day, an open discussion on the opportunities below – and anything else you want to ask.",
@@ -288,7 +383,7 @@ en:{
   why_h:"Why families trust Richwealth",
   tr1:"Serving investors since", tr2:"cities with our investors", tr3:"years of zero default",
   faq_h:"Questions",
-  faq:[["Is it free? Do I need to register?","Yes, it is completely free and there is no registration. Just open this page at 3 PM and tap Join."],
+  faq:[["Is it free? Do I need to register?","Yes, it is completely free. Open this page at 3 PM, enter your name, WhatsApp number, city and occupation, and tap Join."],
        ["Can I join from outside India?","Yes. The time shown is Indian time (IST); this page also shows the time in your own time zone."],
        ["Will I be asked to invest in the session?","No. It is an information and discussion session. Any investment happens only later, after KYC and the official process."],
        ["What if I miss today's session?","It happens every day from 3 to 5 PM – simply join tomorrow, or message us on WhatsApp."],
@@ -310,7 +405,7 @@ hi:{
   hrs:"घंटे", min:"मिनट", sec:"सेकंड",
   join:"लाइव सत्र से जुड़ें", join_s:"जुड़ें", join_wa:"आज का जॉइनिंग लिंक WhatsApp पर पाएँ",
   cal:"कैलेंडर में जोड़ें", remind:"रोज़ रिमाइंडर",
-  hint:"जुड़ना मुफ़्त · कोई रजिस्ट्रेशन नहीं · रविवार सहित हर दिन",
+  hint:"जुड़ना मुफ़्त · आसान रजिस्ट्रेशन · रविवार सहित हर दिन",
   wa_join:"नमस्ते Richwealth, कृपया आज के Richwealth Online (3–5 PM) का जॉइनिंग लिंक भेजें।",
   wa_remind:"नमस्ते Richwealth, कृपया मुझे Richwealth Online (3–5 PM) के रोज़ के रिमाइंडर में जोड़ें।",
   topics_h:"हम किन विषयों पर बात करते हैं", topics_l:"हर दिन नीचे दिए अवसरों पर खुली चर्चा – और आप जो भी पूछना चाहें।",
@@ -330,7 +425,7 @@ hi:{
   why_h:"परिवार Richwealth पर भरोसा क्यों करते हैं",
   tr1:"से निवेशकों की सेवा में", tr2:"शहरों में हमारे निवेशक", tr3:"साल ज़ीरो डिफ़ॉल्ट",
   faq_h:"सवाल",
-  faq:[["क्या यह मुफ़्त है? रजिस्ट्रेशन करना होगा?","हाँ, यह पूरी तरह मुफ़्त है और कोई रजिस्ट्रेशन नहीं। बस 3 बजे यह पेज खोलें और जुड़ें दबाएँ।"],
+  faq:[["क्या यह मुफ़्त है? रजिस्ट्रेशन करना होगा?","हाँ, यह पूरी तरह मुफ़्त है। 3 बजे यह पेज खोलें, अपना नाम, WhatsApp नंबर, शहर और व्यवसाय भरें, और जुड़ें दबाएँ।"],
        ["क्या भारत के बाहर से जुड़ सकते हैं?","हाँ। दिखाया गया समय भारतीय समय (IST) है; यह पेज आपके अपने समय क्षेत्र का समय भी दिखाता है।"],
        ["क्या सत्र में निवेश करने को कहा जाएगा?","नहीं। यह जानकारी और चर्चा का सत्र है। कोई भी निवेश बाद में, KYC और आधिकारिक प्रक्रिया के बाद ही होता है।"],
        ["आज का सत्र छूट जाए तो?","यह हर दिन 3 से 5 बजे होता है – कल जुड़ जाएँ, या हमें WhatsApp करें।"],
@@ -352,7 +447,7 @@ gu:{
   hrs:"કલાક", min:"મિનિટ", sec:"સેકન્ડ",
   join:"લાઇવ સત્રમાં જોડાઓ", join_s:"જોડાઓ", join_wa:"આજની જોઇનિંગ લિંક WhatsApp પર મેળવો",
   cal:"કેલેન્ડરમાં ઉમેરો", remind:"રોજ રિમાઇન્ડર",
-  hint:"જોડાવું મફત · કોઈ રજિસ્ટ્રેશન નહીં · રવિવાર સહિત દરરોજ",
+  hint:"જોડાવું મફત · સરળ રજિસ્ટ્રેશન · રવિવાર સહિત દરરોજ",
   wa_join:"નમસ્તે Richwealth, કૃપા કરી આજના Richwealth Online (3–5 PM) ની જોઇનિંગ લિંક મોકલો.",
   wa_remind:"નમસ્તે Richwealth, કૃપા કરી મને Richwealth Online (3–5 PM) ના રોજના રિમાઇન્ડરમાં ઉમેરો.",
   topics_h:"અમે શેની ચર્ચા કરીએ છીએ", topics_l:"દરરોજ નીચેની તકો પર ખુલ્લી ચર્ચા – અને તમે જે પણ પૂછવા માંગો.",
@@ -372,7 +467,7 @@ gu:{
   why_h:"પરિવારો Richwealth પર કેમ વિશ્વાસ કરે છે",
   tr1:"થી રોકાણકારોની સેવામાં", tr2:"શહેરોમાં અમારા રોકાણકારો", tr3:"વર્ષ ઝીરો ડિફોલ્ટ",
   faq_h:"પ્રશ્નો",
-  faq:[["શું આ મફત છે? રજિસ્ટ્રેશન કરવું પડશે?","હા, આ સંપૂર્ણ મફત છે અને કોઈ રજિસ્ટ્રેશન નથી. બસ 3 વાગ્યે આ પેજ ખોલો અને જોડાઓ દબાવો."],
+  faq:[["શું આ મફત છે? રજિસ્ટ્રેશન કરવું પડશે?","હા, આ સંપૂર્ણ મફત છે. 3 વાગ્યે આ પેજ ખોલો, તમારું નામ, WhatsApp નંબર, શહેર અને વ્યવસાય ભરો, અને જોડાઓ દબાવો."],
        ["ભારત બહારથી જોડાઈ શકાય?","હા. બતાવેલો સમય ભારતીય સમય (IST) છે; આ પેજ તમારા પોતાના ટાઇમ ઝોનનો સમય પણ બતાવે છે."],
        ["સત્રમાં રોકાણ કરવાનું કહેવામાં આવશે?","ના. આ માહિતી અને ચર્ચાનું સત્ર છે. કોઈ પણ રોકાણ પછીથી, KYC અને સત્તાવાર પ્રક્રિયા પછી જ થાય છે."],
        ["આજનું સત્ર ચૂકી જાઉં તો?","આ દરરોજ 3 થી 5 વાગ્યે થાય છે – આવતીકાલે જોડાઓ, અથવા અમને WhatsApp કરો."],
@@ -385,7 +480,50 @@ gu:{
   cal_title:"Richwealth Online (3–5 PM IST)", cal_desc:"Richwealth ટીમ સાથે રોજનું લાઇવ સત્ર. https://online.richwealth.in પર જોડાઓ"
 }};
 
+const OCC = {
+  en:["Business","Job / Service","Professional (Doctor, CA, Lawyer…)","Retired","Homemaker","Student","Farmer / Agriculture","NRI","Other"],
+  hi:["व्यापार","नौकरी / सर्विस","प्रोफ़ेशनल (डॉक्टर, CA, वकील…)","सेवानिवृत्त","गृहिणी","विद्यार्थी","किसान / खेती","NRI","अन्य"],
+  gu:["વ્યવસાય / બિઝનેસ","નોકરી / સર્વિસ","પ્રોફેશનલ (ડૉક્ટર, CA, વકીલ…)","નિવૃત્ત","ગૃહિણી","વિદ્યાર્થી","ખેડૂત / ખેતી","NRI","અન્ય"]
+};
+Object.assign(T.en, {
+  r_h:"Welcome to Richwealth Online", r_sub:"Please enter your details to join the live session.",
+  r_name:"Full name", r_mob:"WhatsApp number", r_city:"City", r_occ:"Occupation", r_pick:"Select…", r_other:"Please write your occupation",
+  e_name:"Please enter your name.", e_mob:"Please enter a valid WhatsApp number.", e_city:"Please enter your city.", e_occ:"Please select your occupation.",
+  r_go:"Continue →", r_wait:"Please wait…", r_priv:"Your details are used only by Richwealth to know who is attending and to send you session updates.",
+  r_fail:"Could not connect. Please check your internet and try again, or WhatsApp +91 99131 21121.",
+  d_live_h:"Thank you, {n}!", d_live_p:"The session is open. Tap below to join Google Meet.",
+  d_hint:"Please join with the same name – <b>{n}</b> – so our team can let you in.",
+  d_closed_h:"Thank you, {n}!", d_closed_p:"You are registered. The session runs every day 3:00–5:00 PM (IST) – the join button opens here 15 minutes before it starts.",
+  d_more:"See what we discuss", join_meet:"Join Google Meet now",
+  join_reg:"Register to join", reg_ok:"✓ Registered as {n}", join_wait:"Join opens at 2:45 PM IST"
+});
+Object.assign(T.hi, {
+  r_h:"Richwealth Online में आपका स्वागत है", r_sub:"लाइव सत्र से जुड़ने के लिए कृपया अपनी जानकारी भरें।",
+  r_name:"पूरा नाम", r_mob:"WhatsApp नंबर", r_city:"शहर", r_occ:"व्यवसाय", r_pick:"चुनें…", r_other:"कृपया अपना व्यवसाय लिखें",
+  e_name:"कृपया अपना नाम लिखें।", e_mob:"कृपया सही WhatsApp नंबर लिखें।", e_city:"कृपया अपना शहर लिखें।", e_occ:"कृपया अपना व्यवसाय चुनें।",
+  r_go:"आगे बढ़ें →", r_wait:"कृपया प्रतीक्षा करें…", r_priv:"आपकी जानकारी केवल Richwealth द्वारा यह जानने के लिए कि कौन जुड़ रहा है और सत्र की जानकारी भेजने के लिए उपयोग होती है।",
+  r_fail:"कनेक्ट नहीं हो सका। इंटरनेट जाँचें और फिर कोशिश करें, या WhatsApp +91 99131 21121 करें।",
+  d_live_h:"धन्यवाद, {n}!", d_live_p:"सत्र खुला है। Google Meet से जुड़ने के लिए नीचे दबाएँ।",
+  d_hint:"कृपया इसी नाम – <b>{n}</b> – से जुड़ें ताकि हमारी टीम आपको अंदर ले सके।",
+  d_closed_h:"धन्यवाद, {n}!", d_closed_p:"आपका रजिस्ट्रेशन हो गया। सत्र रोज़ 3:00–5:00 PM (IST) होता है – शुरू होने से 15 मिनट पहले यहाँ जुड़ने का बटन खुलेगा।",
+  d_more:"देखें हम किन विषयों पर बात करते हैं", join_meet:"अभी Google Meet से जुड़ें",
+  join_reg:"जुड़ने के लिए रजिस्टर करें", reg_ok:"✓ {n} के नाम से रजिस्टर्ड", join_wait:"जुड़ने का बटन 2:45 PM IST पर खुलेगा"
+});
+Object.assign(T.gu, {
+  r_h:"Richwealth Online માં આપનું સ્વાગત છે", r_sub:"લાઇવ સત્રમાં જોડાવા માટે કૃપા કરી તમારી વિગતો ભરો.",
+  r_name:"પૂરું નામ", r_mob:"WhatsApp નંબર", r_city:"શહેર", r_occ:"વ્યવસાય", r_pick:"પસંદ કરો…", r_other:"કૃપા કરી તમારો વ્યવસાય લખો",
+  e_name:"કૃપા કરી તમારું નામ લખો.", e_mob:"કૃપા કરી સાચો WhatsApp નંબર લખો.", e_city:"કૃપા કરી તમારું શહેર લખો.", e_occ:"કૃપા કરી તમારો વ્યવસાય પસંદ કરો.",
+  r_go:"આગળ વધો →", r_wait:"કૃપા કરી રાહ જુઓ…", r_priv:"તમારી વિગતો માત્ર Richwealth દ્વારા કોણ જોડાય છે તે જાણવા અને સત્રની માહિતી મોકલવા માટે વપરાય છે.",
+  r_fail:"કનેક્ટ થઈ શક્યું નહીં. ઇન્ટરનેટ ચેક કરી ફરી પ્રયાસ કરો, અથવા WhatsApp +91 99131 21121 કરો.",
+  d_live_h:"આભાર, {n}!", d_live_p:"સત્ર ચાલુ છે. Google Meet માં જોડાવા નીચે દબાવો.",
+  d_hint:"કૃપા કરી આ જ નામ – <b>{n}</b> – થી જોડાજો, જેથી અમારી ટીમ તમને અંદર લઈ શકે.",
+  d_closed_h:"આભાર, {n}!", d_closed_p:"તમારું રજિસ્ટ્રેશન થઈ ગયું. સત્ર દરરોજ 3:00–5:00 PM (IST) હોય છે – શરૂ થવાના 15 મિનિટ પહેલાં અહીં જોડાવાનું બટન ખુલશે.",
+  d_more:"અમે શેની ચર્ચા કરીએ છીએ તે જુઓ", join_meet:"હમણાં Google Meet માં જોડાઓ",
+  join_reg:"જોડાવા માટે રજિસ્ટર કરો", reg_ok:"✓ {n} તરીકે રજિસ્ટર્ડ", join_wait:"જોડાવાનું બટન 2:45 PM IST પર ખુલશે"
+});
+
 let L = 'en';
+let REG = null;          // {name, cc, mobile, city, occupation} after this visit's registration
 const $ = id => document.getElementById(id);
 const store = { get(k){ try{return localStorage.getItem(k)}catch(e){return null} }, set(k,v){ try{localStorage.setItem(k,v)}catch(e){} } };
 const wa = txt => 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(txt);
@@ -397,7 +535,11 @@ function setLang(l){
   const t = T[L];
   document.querySelectorAll('[data-t]').forEach(el => { const v = t[el.dataset.t]; if (typeof v === 'string') el.textContent = v; });
   document.querySelectorAll('.langbar button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === L));
-  $('logo').src = L === 'en' ? 'logo-en.png' : 'logo-' + L + '.png';
+  $('logo').src = document.querySelector('.elogo').src = L === 'en' ? 'logo-en.png' : 'logo-' + L + '.png';
+  const occV = $('r_occ').value;
+  $('r_occ').innerHTML = `<option value="">${t.r_pick}</option>` + OCC[L].map((o,i) => `<option value="${OCC.en[i]}">${o}</option>`).join('');
+  $('r_occ').value = occV; $('r_occo').placeholder = t.r_other;
+  if (REG) showDone();
   $('topics').innerHTML = TOPIC_KEYS.map((k,i) => `<div class="topic${k==='qa'?' wide':''}"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg></div><h3>${t['t_'+k][0]}</h3><p>${t['t_'+k][1]}</p></div>`).join('');
   $('steps').innerHTML = t.s.map((s,i) => `<li><b class="n">${i+1}</b><div><h3>${s[0]}</h3><p>${s[1]}</p></div></li>`).join('');
   $('faq').innerHTML = t.faq.map(f => `<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('');
@@ -450,9 +592,9 @@ function tick(){
     $('slabel').textContent = p.mins < START_MIN ? t.lbl_today : t.lbl_tom;
     $('cH').textContent = pad(Math.floor(left/3600)); $('cM').textContent = pad(Math.floor(left%3600/60)); $('cS').textContent = pad(left%60);
   }
-  const href = MEET_URL || wa(t.wa_join);
-  $('join').href = $('dockJoin').href = href;
-  $('joinTxt').textContent = MEET_URL ? t.join : t.join_wa;
+  $('join').href = $('dockJoin').href = MEET_URL || '#join';
+  $('joinTxt').textContent = MEET_URL || (REG && (live||early)) ? t.join : REG ? t.join_wait : t.join_reg;
+  $('regok').hidden = !REG; if (REG) $('regok').textContent = t.reg_ok.replace('{n}', REG.name);
   $('dockTxt').innerHTML = (live||early) ? `<span style="color:var(--live)">● ${t.dock_live}</span><small>3:00 – 5:00 PM IST</small>` : `${t.dock_next}<small>${$('slabel').textContent} ${$('cH').textContent}:${$('cM').textContent}:${$('cS').textContent}</small>`;
   $('local').textContent = localLine();
 }
@@ -469,9 +611,92 @@ $('share').addEventListener('click', async () => {
 
 document.addEventListener('click', e => { const b = e.target.closest('[data-lang]'); if (b) setLang(b.dataset.lang); });
 
+/* ===== registration (every visit; fields remembered on this device) ===== */
+const isOpenNow = () => { const m = istParts(Date.now()).mins; return m >= START_MIN - OPEN_EARLY && m < END_MIN; };
+const F = { name:'r_name', mob:'r_mob', city:'r_city', occ:'r_occ' };
+function bad(id, on){ $(id).classList.toggle('bad', on); return on; }
+function readForm(){
+  const name = $('r_name').value.trim().replace(/\s+/g,' '), cc = $('r_cc').value;
+  let mob = $('r_mob').value.replace(/\D/g,'');
+  if (cc === '91' && mob.length === 12 && mob.startsWith('91')) mob = mob.slice(2);
+  mob = mob.replace(/^0+/, '');
+  const city = $('r_city').value.trim(), occSel = $('r_occ').value;
+  const occupation = occSel === 'Other' ? ($('r_occo').value.trim() ? 'Other: ' + $('r_occo').value.trim() : '') : occSel;
+  let err = false;
+  err = bad('f_name', name.length < 2) || err;
+  err = bad('f_mob', cc === '91' ? !/^[6-9]\d{9}$/.test(mob) : (mob.length < 6 || mob.length > 13)) || err;
+  err = bad('f_city', city.length < 2) || err;
+  err = bad('f_occ', !occupation) || err;
+  return err ? null : { name, cc, mobile:mob, city, occupation, occSel, occOther:$('r_occo').value.trim() };
+}
+async function postReg(d){
+  const body = { action:'register', name:d.name, cc:d.cc, mobile:d.mobile, city:d.city, occupation:d.occupation,
+    lang:L, tz:(Intl.DateTimeFormat().resolvedOptions().timeZone||''), ua:navigator.userAgent.slice(0,120),
+    ref:(document.referrer||'') + (location.search ? ' ' + location.search : ''), hp:$('r_hp').value };
+  if (!ENDPOINT) {            // preview mode (no backend): behave like the real one
+    await new Promise(r => setTimeout(r, 500));
+    const open = isOpenNow() || /[?&]open=1/.test(location.search);
+    return { ok:true, open, meet: open ? 'https://meet.google.com/preview-only' : '' };
+  }
+  const ctrl = 'AbortController' in window ? new AbortController() : null;
+  const to = setTimeout(() => ctrl && ctrl.abort(), 25000);
+  try {
+    const r = await fetch(ENDPOINT, { method:'POST', body:JSON.stringify(body), signal: ctrl ? ctrl.signal : undefined });
+    return await r.json();
+  } finally { clearTimeout(to); }
+}
+function showDone(){
+  const t = T[L], n = REG.name, live = !!MEET_URL;
+  $('regForm').hidden = true; $('regDone').hidden = false;
+  $('d_h').textContent = (live ? t.d_live_h : t.d_closed_h).replace('{n}', n);
+  $('d_p').textContent = live ? t.d_live_p : t.d_closed_p;
+  $('d_join').hidden = !live; if (live) $('d_join').href = MEET_URL;
+  $('d_hint').hidden = !live; $('d_hint').innerHTML = t.d_hint.replace('{n}', n.replace(/[<>&]/g,''));
+}
+function openEntry(){ $('entry').hidden = false; document.body.style.overflow = 'hidden'; }
+function closeEntry(){ $('entry').hidden = true; document.body.style.overflow = ''; }
+
+$('r_occ').addEventListener('change', () => { $('r_occo').hidden = $('r_occ').value !== 'Other'; });
+Object.values(F).forEach(id => $(id).addEventListener('input', () => $(id).closest('.fld').classList.remove('bad')));
+$('regForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const d = readForm(); if (!d) { const b = document.querySelector('.fld.bad input, .fld.bad select'); if (b) b.focus(); return; }
+  const go = $('r_go'); go.disabled = true; go.firstElementChild.textContent = T[L].r_wait; $('r_msg').classList.remove('show');
+  try {
+    const res = await postReg(d);
+    if (!res || !res.ok) throw new Error(res && res.error || 'fail');
+    REG = d; MEET_URL = res.open && res.meet ? res.meet : '';
+    store.set('rw_online_me', JSON.stringify({ name:d.name, cc:d.cc, mobile:d.mobile, city:d.city, occSel:d.occSel, occOther:d.occOther }));
+    showDone(); tick();
+  } catch (err) {
+    $('r_msg').textContent = T[L].r_fail; $('r_msg').classList.add('show');
+  } finally { go.disabled = false; go.firstElementChild.textContent = T[L].r_go; }
+});
+$('d_close').addEventListener('click', closeEntry);
+$('d_join').addEventListener('click', () => setTimeout(closeEntry, 300));
+
+/* Join buttons: not registered → form; registered and session open → fetch link again; else show "come back" */
+['join','dockJoin'].forEach(id => $(id).addEventListener('click', async e => {
+  if (MEET_URL) return;                       // real link – let it open
+  e.preventDefault();
+  if (!REG) { $('regForm').hidden = false; $('regDone').hidden = true; openEntry(); return; }
+  if (isOpenNow()) {
+    try { const res = await postReg(REG); if (res && res.ok && res.open && res.meet) MEET_URL = res.meet; } catch(_){}
+    tick();
+  }
+  showDone(); openEntry();
+}));
+
+/* prefill from last visit (still has to tap Continue every visit) */
+try { const me = JSON.parse(store.get('rw_online_me') || 'null');
+  if (me) { $('r_name').value = me.name||''; $('r_cc').value = me.cc||'91'; $('r_mob').value = me.mobile||''; $('r_city').value = me.city||'';
+    $('r_occ').dataset.pre = me.occSel||''; $('r_occo').value = me.occOther||''; } } catch(_){}
+
 const qs = new URLSearchParams(location.search).get('lang');
 const saved = qs || store.get('rw_online_lang');
 setLang(saved && T[saved] ? saved : 'en');
+if ($('r_occ').dataset.pre) { $('r_occ').value = $('r_occ').dataset.pre; $('r_occo').hidden = $('r_occ').value !== 'Other'; }
+openEntry();
 if (!saved) $('gate').hidden = false;
 setInterval(tick, 1000);
 </script>
