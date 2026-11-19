@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Richwealth Online – Every day 3–5 PM</title>
+<meta name="description" content="Richwealth Online – live every day 3 to 5 PM (IST). Talk to our team about investment plans, future plans, Privé membership, Vishram Dwarka and the Dwarka land opportunity.">
+<meta property="og:title" content="Richwealth Online · Every day 3–5 PM (IST)">
+<meta property="og:description" content="Join live and ask anything – investment plans, Privé membership, Vishram Dwarka, Dwarka land opportunity and more.">
+<meta property="og:image" content="logo-en.png">
+<meta name="theme-color" content="#faf6ec">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Playfair+Display:wght@600;700&family=Noto+Serif+Gujarati:wght@500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf6ec; --cream2:#f3ecd9; --paper:#fffdf7;
+    --gold:#b08d2e; --gold-dk:#8a6d1f; --gold-lt:#f1dfa6; --line:#e2d5ae;
+    --navy:#14213d; --ink:#1f2433; --muted:#6b6553;
+    --live:#c62828; --green:#2e7d32; --wa:#1fa855;
+    --head:"Playfair Display",Georgia,serif; --body:Montserrat,system-ui,sans-serif;
+  }
+  html[lang=gu]{--head:"Noto Serif Gujarati","Playfair Display",serif; --body:Montserrat,"Noto Serif Gujarati",sans-serif}
+  html[lang=hi]{--head:"Noto Serif Devanagari","Playfair Display",serif; --body:Montserrat,"Noto Serif Devanagari",sans-serif}
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:linear-gradient(180deg,var(--cream),var(--cream2)) fixed; color:var(--ink); font:16px/1.6 var(--body); -webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px; margin:0 auto; padding:0 16px}
+  h1,h2,h3{font-family:var(--head); line-height:1.3; margin:0; color:var(--navy); text-wrap:balance}
+  p,li{text-wrap:pretty}
+  a{color:var(--gold-dk)}
+  .num{font-family:Montserrat,system-ui,sans-serif; font-variant-numeric:tabular-nums}
+
+  /* language gate */
+  .gate{position:fixed; inset:0; z-index:50; background:rgba(20,33,61,.94); display:flex; align-items:center; justify-content:center; padding:16px}
+  .gate[hidden]{display:none}
+  .gatebox{background:var(--paper); border:2px solid var(--gold); border-radius:16px; padding:26px 22px; width:100%; max-width:360px; text-align:center}
+  .gatebox img{width:200px; height:auto}
+  .gatebox p{margin:10px 0 16px; color:var(--gold-dk); font:600 15px/1.6 "Noto Serif Gujarati",Montserrat,"Noto Serif Devanagari",sans-serif}
+  .gatebox button{display:block; width:100%; margin-top:10px; padding:14px; border-radius:10px; border:1.5px solid var(--gold); background:#fff; color:var(--navy); cursor:pointer; font:700 18px/1.2 "Noto Serif Gujarati","Noto Serif Devanagari",Montserrat,sans-serif}
+  .gatebox button:hover,.gatebox button:focus{background:var(--gold); color:#fff; outline:none}
+
+  /* app bar */
+  .appbar{position:sticky; top:0; z-index:20; background:rgba(250,246,236,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  .appbar .in{max-width:720px; margin:0 auto; padding:8px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px}
+  .appbar img{width:150px; max-width:44%; height:auto; display:block}
+  .langbar{display:flex; gap:6px}
+  .langbar button{background:transparent; border:1px solid var(--line); color:var(--gold-dk); border-radius:999px; padding:5px 10px; cursor:pointer; font:600 13px/1.2 "Noto Serif Gujarati",Montserrat,"Noto Serif Devanagari",sans-serif}
+  .langbar button[aria-pressed=true]{background:var(--gold); border-color:var(--gold); color:#fff}
+
+  /* hero */
+  .hero{text-align:center; padding:22px 0 6px}
+  .kicker{font:700 12px/1.4 Montserrat,sans-serif; letter-spacing:.24em; color:var(--gold-dk); text-transform:uppercase}
+  .hero h1{font-size:clamp(30px,8vw,46px); margin:6px 0 2px}
+  .time{display:inline-flex; align-items:center; gap:8px; margin:8px 0 6px; background:var(--navy); color:#fff; border-radius:999px; padding:8px 18px; font:700 clamp(16px,4.4vw,20px)/1.2 Montserrat,sans-serif}
+  .time small{font-weight:600; opacity:.8; font-size:.72em; letter-spacing:.08em}
+  .hero .sub{color:var(--muted); max-width:540px; margin:6px auto 0}
+  .local{font-size:13.5px; color:var(--gold-dk); margin-top:6px; min-height:1em}
+
+  /* status card */
+  .status{margin:18px 0 0; background:#fff; border:1.5px solid var(--gold); border-radius:18px; padding:18px; text-align:center; box-shadow:0 10px 36px rgba(138,109,31,.13)}
+  .badge{display:inline-flex; align-items:center; gap:8px; font:800 13px/1 Montserrat,sans-serif; letter-spacing:.16em; text-transform:uppercase; padding:7px 12px; border-radius:999px; background:var(--cream); color:var(--gold-dk); border:1px solid var(--line)}
+  .badge i{width:9px; height:9px; border-radius:50%; background:var(--gold)}
+  .status.live .badge{background:#fdecea; color:var(--live); border-color:#f5c2bd}
+  .status.live .badge i{background:var(--live); animation:pulse 1.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(198,40,40,.55)}70%{box-shadow:0 0 0 10px rgba(198,40,40,0)}100%{box-shadow:0 0 0 0 rgba(198,40,40,0)}}
+  .slabel{margin:12px 0 4px; color:var(--muted); font-size:14.5px}
+  .count{display:flex; justify-content:center; gap:8px; margin:4px 0 2px}
+  .count div{min-width:70px; background:var(--cream); border:1px solid var(--line); border-radius:12px; padding:8px 6px}
+  .count b{display:block; font:800 28px/1.1 Montserrat,sans-serif; color:var(--navy); font-variant-numeric:tabular-nums}
+  .count span{font-size:12px; color:var(--muted)}
+  .status.live .count{display:none}
+  .btn{display:flex; align-items:center; justify-content:center; gap:10px; width:100%; margin-top:14px; padding:15px 18px; border-radius:12px; border:0; cursor:pointer; text-decoration:none; font:700 17px/1.2 var(--body)}
+  .btn svg{width:22px; height:22px; flex:none}
+  .btn-join{background:linear-gradient(180deg,#c39d3a,var(--gold-dk)); color:#fff; box-shadow:0 6px 18px rgba(138,109,31,.35)}
+  .status.live .btn-join{background:linear-gradient(180deg,#d33a3a,var(--live)); box-shadow:0 6px 18px rgba(198,40,40,.35)}
+  .btn-ghost{background:#fff; color:var(--navy); border:1.5px solid var(--line)}
+  .btn-wa{background:var(--wa); color:#fff}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .row2 .btn{margin-top:10px; font-size:15px; padding:13px 10px}
+  .hint{font-size:13px; color:var(--muted); margin:10px 0 0}
+
+  /* sections */
+  section{margin-top:30px}
+  .h2{font-size:clamp(22px,5.6vw,28px); text-align:center}
+  .lead{text-align:center; color:var(--muted); margin:6px auto 14px; max-width:540px}
+  .topics{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .topic{background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 13px}
+  .topic .ic{width:40px; height:40px; border-radius:11px; display:grid; place-items:center; background:var(--cream); color:var(--gold-dk); margin-bottom:8px}
+  .topic .ic svg{width:22px; height:22px}
+  .topic h3{font-size:16.5px}
+  .topic p{margin:4px 0 0; font-size:13.5px; color:var(--muted); line-height:1.5}
+  .topic.wide{background:var(--navy); border-color:var(--navy)}
+  .topic.wide h3{color:#fff}
+  .topic.wide p{color:#d9d2bd}
+  .topic.wide .ic{background:rgba(255,255,255,.1); color:var(--gold-lt)}
+
+  .steps{list-style:none; margin:0; padding:0; display:grid; gap:10px}
+  .steps li{display:flex; gap:12px; align-items:flex-start; background:#fff; border:1px solid var(--line); border-radius:14px; padding:13px 14px}
+  .steps li b.n{flex:none; width:32px; height:32px; border-radius:50%; background:var(--gold); color:#fff; display:grid; place-items:center; font:800 15px/1 Montserrat,sans-serif}
+  .steps h3{font-size:16px}
+  .steps p{margin:2px 0 0; font-size:14px; color:var(--muted)}
+
+  .trust{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:4px}
+  .trust div{background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px 6px; text-align:center}
+  .trust b{display:block; font:800 clamp(18px,5vw,24px)/1.2 Montserrat,sans-serif; color:var(--gold-dk)}
+  .trust span{font-size:12.5px; color:var(--muted); line-height:1.3; display:block}
+
+  details{background:#fff; border:1px solid var(--line); border-radius:12px; margin-top:8px}
+  summary{cursor:pointer; padding:13px 14px; font-weight:700; color:var(--navy); list-style:none; display:flex; justify-content:space-between; gap:10px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+"; color:var(--gold-dk); font-weight:800}
+  details[open] summary::after{content:"–"}
+  details p{margin:0; padding:0 14px 13px; color:var(--muted); font-size:14.5px}
+
+  .links{display:grid; grid-template-columns:repeat(3,1fr); gap:8px}
+  .links a{display:block; text-align:center; background:#fff; border:1px solid var(--line); border-radius:12px; padding:11px 6px; text-decoration:none; color:var(--navy); font-weight:700; font-size:14px}
+  .links a span{display:block; font-size:11.5px; font-weight:500; color:var(--muted)}
+
+  footer{text-align:center; color:var(--muted); font-size:13px; padding:28px 0 110px}
+  footer .fine{font-size:12px; max-width:560px; margin:10px auto 0; opacity:.85}
+
+  /* sticky join bar */
+  .dock{position:fixed; left:0; right:0; bottom:0; z-index:15; background:rgba(255,253,247,.97); border-top:1px solid var(--line); padding:10px 16px calc(10px + env(safe-area-inset-bottom)); transform:translateY(110%); transition:transform .25s}
+  .dock.show{transform:none}
+  .dock .in{max-width:720px; margin:0 auto; display:flex; gap:10px; align-items:center}
+  .dock .txt{flex:1; font-size:13.5px; line-height:1.35; color:var(--navy); font-weight:600}
+  .dock .txt small{display:block; font-weight:500; color:var(--muted)}
+  .dock .btn{width:auto; margin:0; padding:12px 18px; font-size:15px}
+  @media (max-width:380px){ .topics{grid-template-columns:1fr} .count div{min-width:60px} }
+  @media (prefers-reduced-motion:reduce){ .status.live .badge i{animation:none} .dock{transition:none} }
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate" hidden>
+  <div class="gatebox">
+    <img src="logo-en.png" alt="Richwealth">
+    <p>ભાષા પસંદ કરો · भाषा चुनें · Choose language</p>
+    <button data-lang="gu">ગુજરાતી</button>
+    <button data-lang="hi">हिन्दी</button>
+    <button data-lang="en">English</button>
+  </div>
+</div>
+
+<div class="appbar"><div class="in">
+  <img id="logo" src="logo-en.png" alt="Richwealth">
+  <div class="langbar" role="group" aria-label="Language">
+    <button data-lang="gu">ગુ</button><button data-lang="hi">हि</button><button data-lang="en">EN</button>
+  </div>
+</div></div>
+
+<main class="wrap">
+  <div class="hero">
+    <div class="kicker">Richwealth Online</div>
+    <h1 data-t="h1"></h1>
+    <div class="time"><span class="num">3:00 – 5:00 PM</span> <small>IST</small></div>
+    <p class="sub" data-t="sub"></p>
+    <div class="local" id="local"></div>
+  </div>
+
+  <div class="status" id="status">
+    <span class="badge"><i></i><span id="badgeTxt"></span></span>
+    <p class="slabel" id="slabel"></p>
+    <div class="count" id="count">
+      <div><b id="cH">00</b><span data-t="hrs"></span></div>
+      <div><b id="cM">00</b><span data-t="min"></span></div>
+      <div><b id="cS">00</b><span data-t="sec"></span></div>
+    </div>
+    <a class="btn btn-join" id="join" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15 8.5V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1.5l5.3 3.2a1 1 0 0 0 1.5-.86V6.16a1 1 0 0 0-1.5-.86z"/></svg>
+      <span id="joinTxt"></span>
+    </a>
+    <div class="row2">
+      <a class="btn btn-ghost" id="cal" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        <span data-t="cal"></span>
+      </a>
+      <a class="btn btn-wa" id="remind" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>
+        <span data-t="remind"></span>
+      </a>
+    </div>
+    <p class="hint" data-t="hint"></p>
+  </div>
+
+  <section>
+    <h2 class="h2" data-t="topics_h"></h2>
+    <p class="lead" data-t="topics_l"></p>
+    <div class="topics" id="topics"></div>
+  </section>
+
+  <section>
+    <h2 class="h2" data-t="how_h"></h2>
+    <p class="lead" data-t="how_l"></p>
+    <ol class="steps" id="steps"></ol>
+  </section>
+
+  <section>
+    <h2 class="h2" data-t="why_h"></h2>
+    <div class="trust" style="margin-top:14px">
+      <div><b class="num">2011</b><span data-t="tr1"></span></div>
+      <div><b class="num">200+</b><span data-t="tr2"></span></div>
+      <div><b class="num">15+</b><span data-t="tr3"></span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="h2" data-t="faq_h"></h2>
+    <div id="faq" style="margin-top:12px"></div>
+  </section>
+
+  <section>
+    <h2 class="h2" data-t="more_h"></h2>
+    <div class="links" style="margin-top:12px">
+      <a href="https://invest.richwealth.in" target="_blank" rel="noopener">Invest<span data-t="l1"></span></a>
+      <a href="https://kyc.richwealth.in" target="_blank" rel="noopener">KYC<span data-t="l2"></span></a>
+      <a href="https://careers.richwealth.in" target="_blank" rel="noopener">Careers<span data-t="l3"></span></a>
+    </div>
+    <button class="btn btn-ghost" id="share" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      <span data-t="share"></span>
+    </button>
+  </section>
+
+  <footer>
+    <div>Richwealth · Head Office, Jamnagar, Gujarat</div>
+    <div>WhatsApp <a href="https://wa.me/919913121121">+91 99131 21121</a> · <a href="mailto:info@richwealth.in">info@richwealth.in</a> · <a href="https://richwealth.in">richwealth.in</a></div>
+    <p class="fine" data-t="fine"></p>
+  </footer>
+</main>
+
+<div class="dock" id="dock"><div class="in">
+  <div class="txt" id="dockTxt"></div>
+  <a class="btn btn-join" id="dockJoin" target="_blank" rel="noopener"><span data-t="join_s"></span></a>
+</div></div>
+
+<script>
+/* ===================== CONFIG ===================== */
+// Google Meet link of the daily session (richwealth214 Workspace). Paste the fixed link here.
+const MEET_URL = "";
+const WA_NUMBER = "919913121121";           // reminders / questions
+const START_MIN = 15*60, END_MIN = 17*60;   // 3:00 PM – 5:00 PM IST, every day
+const OPEN_EARLY = 10;                       // "join" turns live 10 min before
+/* ================================================== */
+
+const ICONS = {
+  plans:'<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>',
+  future:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  prive:'<path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/>',
+  villa:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+  land:'<path d="M3 20h18"/><path d="M5 20l5-9 3 5 2-3 4 7"/><circle cx="17" cy="6" r="2"/>',
+  team:'<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 15c3 0 5.5 1.6 5.5 4.5"/>',
+  kyc:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.5-1.5 1.7-2 3-2s2.5.5 3 2M14 10h4M14 13h3"/>',
+  qa:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.6 1.3c0 1.7-2.1 2-2.1 3.2M12 16.5h.01"/>'
+};
+const TOPIC_KEYS = ['plans','future','prive','villa','land','team','kyc','qa'];
+
+const T = {
+en:{
+  h1:"Live every day with the Richwealth team",
+  sub:"An open online session for investors, families and anyone curious. Join from your phone or laptop, listen, and ask your questions directly.",
+  local:"In your time zone: {t}",
+  live:"Live now", soon:"Opening now", next:"Next session",
+  lbl_live:"We are live – join now and ask your questions.",
+  lbl_today:"Today's session starts in", lbl_tom:"Tomorrow's session starts in",
+  hrs:"hours", min:"minutes", sec:"seconds",
+  join:"Join the live session", join_s:"Join", join_wa:"Get today's joining link on WhatsApp",
+  cal:"Add to calendar", remind:"Daily reminder",
+  hint:"Free to join · no registration · every day including Sunday",
+  wa_join:"Hello Richwealth, please send me today's Richwealth Online (3–5 PM) joining link.",
+  wa_remind:"Hello Richwealth, please add me to the daily reminder for Richwealth Online (3–5 PM).",
+  topics_h:"What we discuss", topics_l:"Every day, an open discussion on the opportunities below – and anything else you want to ask.",
+  t_plans:["Investment plans","Monthly and yearly plans, how payouts work, and which plan suits your goal."],
+  t_future:["Future plans","Where Richwealth is going next – new projects, new cities and the road ahead."],
+  t_prive:["Privé membership","Member benefits, eligibility, fees and how to become a Privé member."],
+  t_villa:["Vishram Dwarka","Our villa project near Dwarka – models, location, progress and booking."],
+  t_land:["Dwarka land opportunity","The resort-land opportunity near Dwarka – location, plan and how to take part."],
+  t_team:["Work with us","Careers and partnership opportunities with Richwealth across Gujarat."],
+  t_kyc:["KYC & payout help","Re-KYC, documents, TDS and payout questions – answered live."],
+  t_qa:["…and many more","Open Q&A every day. Bring your family, bring your questions."],
+  how_h:"How to join", how_l:"It takes less than a minute.",
+  s:[["Open this page between 3 and 5 PM","Bookmark online.richwealth.in or add the daily reminder to your calendar."],
+     ["Tap “Join the live session”","It opens Google Meet. On a phone, use the Meet app or your browser."],
+     ["Listen, then ask","Unmute or type in the chat – our team answers you live."],
+     ["Take the next step","Want details for your family? Ask for a personal call with your Relationship Manager."]],
+  why_h:"Why families trust Richwealth",
+  tr1:"Serving investors since", tr2:"cities with our investors", tr3:"years of zero default",
+  faq_h:"Questions",
+  faq:[["Is it free? Do I need to register?","Yes, it is completely free and there is no registration. Just open this page at 3 PM and tap Join."],
+       ["Can I join from outside India?","Yes. The time shown is Indian time (IST); this page also shows the time in your own time zone."],
+       ["Will I be asked to invest in the session?","No. It is an information and discussion session. Any investment happens only later, after KYC and the official process."],
+       ["What if I miss today's session?","It happens every day from 3 to 5 PM – simply join tomorrow, or message us on WhatsApp."],
+       ["Can my family join with me?","Of course. Share this page with them – everyone is welcome."]],
+  more_h:"More from Richwealth", l1:"New investment", l2:"Update your KYC", l3:"Join our team",
+  share:"Share this page", share_txt:"Richwealth Online – live every day 3–5 PM (IST). Join here:",
+  copied:"Link copied",
+  dock_live:"We are live now", dock_next:"Richwealth Online · 3–5 PM IST",
+  fine:"Richwealth Online is an information and discussion session. Investments are made only after KYC, on Richwealth's written terms, through official bank accounts. Please read all terms before investing.",
+  cal_title:"Richwealth Online (3–5 PM IST)", cal_desc:"Daily live session with the Richwealth team. Join at https://online.richwealth.in"
+},
+hi:{
+  h1:"Richwealth टीम के साथ रोज़ लाइव",
+  sub:"निवेशकों, परिवारों और जानना चाहने वाले हर व्यक्ति के लिए खुला ऑनलाइन सत्र। फ़ोन या लैपटॉप से जुड़ें, सुनें और अपने सवाल सीधे पूछें।",
+  local:"आपके समय क्षेत्र में: {t}",
+  live:"अभी लाइव", soon:"अब शुरू हो रहा है", next:"अगला सत्र",
+  lbl_live:"हम लाइव हैं – अभी जुड़ें और अपने सवाल पूछें।",
+  lbl_today:"आज का सत्र शुरू होने में", lbl_tom:"कल का सत्र शुरू होने में",
+  hrs:"घंटे", min:"मिनट", sec:"सेकंड",
+  join:"लाइव सत्र से जुड़ें", join_s:"जुड़ें", join_wa:"आज का जॉइनिंग लिंक WhatsApp पर पाएँ",
+  cal:"कैलेंडर में जोड़ें", remind:"रोज़ रिमाइंडर",
+  hint:"जुड़ना मुफ़्त · कोई रजिस्ट्रेशन नहीं · रविवार सहित हर दिन",
+  wa_join:"नमस्ते Richwealth, कृपया आज के Richwealth Online (3–5 PM) का जॉइनिंग लिंक भेजें।",
+  wa_remind:"नमस्ते Richwealth, कृपया मुझे Richwealth Online (3–5 PM) के रोज़ के रिमाइंडर में जोड़ें।",
+  topics_h:"हम किन विषयों पर बात करते हैं", topics_l:"हर दिन नीचे दिए अवसरों पर खुली चर्चा – और आप जो भी पूछना चाहें।",
+  t_plans:["निवेश प्लान","मासिक और वार्षिक प्लान, भुगतान कैसे होता है, और आपके लक्ष्य के लिए कौन-सा प्लान सही है।"],
+  t_future:["भविष्य की योजनाएँ","Richwealth आगे कहाँ जा रहा है – नए प्रोजेक्ट, नए शहर और आगे का रास्ता।"],
+  t_prive:["Privé सदस्यता","सदस्य लाभ, पात्रता, शुल्क और Privé सदस्य कैसे बनें।"],
+  t_villa:["विश्राम द्वारका","द्वारका के पास हमारा विला प्रोजेक्ट – मॉडल, लोकेशन, प्रगति और बुकिंग।"],
+  t_land:["द्वारका ज़मीन अवसर","द्वारका के पास रिसॉर्ट-ज़मीन का अवसर – लोकेशन, योजना और कैसे जुड़ें।"],
+  t_team:["हमारे साथ काम करें","पूरे गुजरात में Richwealth के साथ करियर और साझेदारी के अवसर।"],
+  t_kyc:["KYC और भुगतान सहायता","Re-KYC, दस्तावेज़, TDS और भुगतान से जुड़े सवाल – लाइव जवाब।"],
+  t_qa:["…और भी बहुत कुछ","हर दिन खुले सवाल-जवाब। परिवार को साथ लाएँ, सवाल साथ लाएँ।"],
+  how_h:"कैसे जुड़ें", how_l:"एक मिनट से भी कम समय लगता है।",
+  s:[["3 से 5 बजे के बीच यह पेज खोलें","online.richwealth.in को बुकमार्क करें या रोज़ का रिमाइंडर कैलेंडर में जोड़ें।"],
+     ["“लाइव सत्र से जुड़ें” दबाएँ","Google Meet खुलेगा। फ़ोन पर Meet ऐप या ब्राउज़र इस्तेमाल करें।"],
+     ["सुनें, फिर पूछें","माइक चालू करें या चैट में लिखें – हमारी टीम लाइव जवाब देगी।"],
+     ["अगला कदम उठाएँ","परिवार के लिए विस्तार से जानना है? अपने रिलेशनशिप मैनेजर से निजी कॉल माँगें।"]],
+  why_h:"परिवार Richwealth पर भरोसा क्यों करते हैं",
+  tr1:"से निवेशकों की सेवा में", tr2:"शहरों में हमारे निवेशक", tr3:"साल ज़ीरो डिफ़ॉल्ट",
+  faq_h:"सवाल",
+  faq:[["क्या यह मुफ़्त है? रजिस्ट्रेशन करना होगा?","हाँ, यह पूरी तरह मुफ़्त है और कोई रजिस्ट्रेशन नहीं। बस 3 बजे यह पेज खोलें और जुड़ें दबाएँ।"],
+       ["क्या भारत के बाहर से जुड़ सकते हैं?","हाँ। दिखाया गया समय भारतीय समय (IST) है; यह पेज आपके अपने समय क्षेत्र का समय भी दिखाता है।"],
+       ["क्या सत्र में निवेश करने को कहा जाएगा?","नहीं। यह जानकारी और चर्चा का सत्र है। कोई भी निवेश बाद में, KYC और आधिकारिक प्रक्रिया के बाद ही होता है।"],
+       ["आज का सत्र छूट जाए तो?","यह हर दिन 3 से 5 बजे होता है – कल जुड़ जाएँ, या हमें WhatsApp करें।"],
+       ["क्या मेरा परिवार साथ जुड़ सकता है?","बिल्कुल। यह पेज उनके साथ शेयर करें – सबका स्वागत है।"]],
+  more_h:"Richwealth से और", l1:"नया निवेश", l2:"KYC अपडेट करें", l3:"टीम से जुड़ें",
+  share:"यह पेज शेयर करें", share_txt:"Richwealth Online – रोज़ 3–5 PM (IST) लाइव। यहाँ जुड़ें:",
+  copied:"लिंक कॉपी हुआ",
+  dock_live:"हम अभी लाइव हैं", dock_next:"Richwealth Online · 3–5 PM IST",
+  fine:"Richwealth Online जानकारी और चर्चा का सत्र है। निवेश केवल KYC के बाद, Richwealth की लिखित शर्तों पर, आधिकारिक बैंक खातों के माध्यम से होता है। निवेश से पहले सभी शर्तें पढ़ें।",
+  cal_title:"Richwealth Online (3–5 PM IST)", cal_desc:"Richwealth टीम के साथ रोज़ का लाइव सत्र। https://online.richwealth.in पर जुड़ें"
+},
+gu:{
+  h1:"Richwealth ટીમ સાથે દરરોજ લાઇવ",
+  sub:"રોકાણકારો, પરિવારો અને જાણવા ઇચ્છતા દરેક માટે ખુલ્લું ઓનલાઇન સત્ર. ફોન કે લેપટોપથી જોડાઓ, સાંભળો અને તમારા પ્રશ્નો સીધા પૂછો.",
+  local:"તમારા ટાઇમ ઝોનમાં: {t}",
+  live:"હમણાં લાઇવ", soon:"હવે શરૂ થાય છે", next:"આગામી સત્ર",
+  lbl_live:"અમે લાઇવ છીએ – હમણાં જોડાઓ અને તમારા પ્રશ્નો પૂછો.",
+  lbl_today:"આજનું સત્ર શરૂ થવામાં", lbl_tom:"આવતીકાલનું સત્ર શરૂ થવામાં",
+  hrs:"કલાક", min:"મિનિટ", sec:"સેકન્ડ",
+  join:"લાઇવ સત્રમાં જોડાઓ", join_s:"જોડાઓ", join_wa:"આજની જોઇનિંગ લિંક WhatsApp પર મેળવો",
+  cal:"કેલેન્ડરમાં ઉમેરો", remind:"રોજ રિમાઇન્ડર",
+  hint:"જોડાવું મફત · કોઈ રજિસ્ટ્રેશન નહીં · રવિવાર સહિત દરરોજ",
+  wa_join:"નમસ્તે Richwealth, કૃપા કરી આજના Richwealth Online (3–5 PM) ની જોઇનિંગ લિંક મોકલો.",
+  wa_remind:"નમસ્તે Richwealth, કૃપા કરી મને Richwealth Online (3–5 PM) ના રોજના રિમાઇન્ડરમાં ઉમેરો.",
+  topics_h:"અમે શેની ચર્ચા કરીએ છીએ", topics_l:"દરરોજ નીચેની તકો પર ખુલ્લી ચર્ચા – અને તમે જે પણ પૂછવા માંગો.",
+  t_plans:["રોકાણ પ્લાન","માસિક અને વાર્ષિક પ્લાન, ચુકવણી કેવી રીતે થાય છે, અને તમારા લક્ષ્ય માટે કયો પ્લાન યોગ્ય છે."],
+  t_future:["ભવિષ્યની યોજનાઓ","Richwealth આગળ ક્યાં જઈ રહ્યું છે – નવા પ્રોજેક્ટ, નવા શહેરો અને આગળનો માર્ગ."],
+  t_prive:["Privé સભ્યપદ","સભ્ય લાભો, પાત્રતા, ફી અને Privé સભ્ય કેવી રીતે બનવું."],
+  t_villa:["વિશ્રામ દ્વારકા","દ્વારકા પાસે અમારો વિલા પ્રોજેક્ટ – મોડલ, લોકેશન, પ્રગતિ અને બુકિંગ."],
+  t_land:["દ્વારકા જમીન તક","દ્વારકા પાસે રિસોર્ટ-જમીનની તક – લોકેશન, યોજના અને કેવી રીતે જોડાવું."],
+  t_team:["અમારી સાથે કામ કરો","સમગ્ર ગુજરાતમાં Richwealth સાથે કારકિર્દી અને ભાગીદારીની તકો."],
+  t_kyc:["KYC અને ચુકવણી મદદ","Re-KYC, દસ્તાવેજો, TDS અને ચુકવણીના પ્રશ્નો – લાઇવ જવાબ."],
+  t_qa:["…અને ઘણું બધું","દરરોજ ખુલ્લા પ્રશ્ન-જવાબ. પરિવારને સાથે લાવો, પ્રશ્નો સાથે લાવો."],
+  how_h:"કેવી રીતે જોડાવું", how_l:"એક મિનિટથી પણ ઓછો સમય લાગે છે.",
+  s:[["3 થી 5 વાગ્યા વચ્ચે આ પેજ ખોલો","online.richwealth.in બુકમાર્ક કરો અથવા રોજનું રિમાઇન્ડર કેલેન્ડરમાં ઉમેરો."],
+     ["“લાઇવ સત્રમાં જોડાઓ” દબાવો","Google Meet ખુલશે. ફોન પર Meet એપ અથવા બ્રાઉઝર વાપરો."],
+     ["સાંભળો, પછી પૂછો","માઇક ચાલુ કરો અથવા ચેટમાં લખો – અમારી ટીમ લાઇવ જવાબ આપશે."],
+     ["આગળનું પગલું ભરો","પરિવાર માટે વિગતે જાણવું છે? તમારા રિલેશનશિપ મેનેજર સાથે અંગત કૉલ માંગો."]],
+  why_h:"પરિવારો Richwealth પર કેમ વિશ્વાસ કરે છે",
+  tr1:"થી રોકાણકારોની સેવામાં", tr2:"શહેરોમાં અમારા રોકાણકારો", tr3:"વર્ષ ઝીરો ડિફોલ્ટ",
+  faq_h:"પ્રશ્નો",
+  faq:[["શું આ મફત છે? રજિસ્ટ્રેશન કરવું પડશે?","હા, આ સંપૂર્ણ મફત છે અને કોઈ રજિસ્ટ્રેશન નથી. બસ 3 વાગ્યે આ પેજ ખોલો અને જોડાઓ દબાવો."],
+       ["ભારત બહારથી જોડાઈ શકાય?","હા. બતાવેલો સમય ભારતીય સમય (IST) છે; આ પેજ તમારા પોતાના ટાઇમ ઝોનનો સમય પણ બતાવે છે."],
+       ["સત્રમાં રોકાણ કરવાનું કહેવામાં આવશે?","ના. આ માહિતી અને ચર્ચાનું સત્ર છે. કોઈ પણ રોકાણ પછીથી, KYC અને સત્તાવાર પ્રક્રિયા પછી જ થાય છે."],
+       ["આજનું સત્ર ચૂકી જાઉં તો?","આ દરરોજ 3 થી 5 વાગ્યે થાય છે – આવતીકાલે જોડાઓ, અથવા અમને WhatsApp કરો."],
+       ["મારો પરિવાર સાથે જોડાઈ શકે?","ચોક્કસ. આ પેજ તેમની સાથે શેર કરો – સૌનું સ્વાગત છે."]],
+  more_h:"Richwealth તરફથી વધુ", l1:"નવું રોકાણ", l2:"KYC અપડેટ કરો", l3:"ટીમમાં જોડાઓ",
+  share:"આ પેજ શેર કરો", share_txt:"Richwealth Online – દરરોજ 3–5 PM (IST) લાઇવ. અહીં જોડાઓ:",
+  copied:"લિંક કૉપી થઈ",
+  dock_live:"અમે હમણાં લાઇવ છીએ", dock_next:"Richwealth Online · 3–5 PM IST",
+  fine:"Richwealth Online માહિતી અને ચર્ચાનું સત્ર છે. રોકાણ માત્ર KYC પછી, Richwealth ની લેખિત શરતો પર, સત્તાવાર બેંક ખાતાઓ મારફતે થાય છે. રોકાણ પહેલાં બધી શરતો વાંચો.",
+  cal_title:"Richwealth Online (3–5 PM IST)", cal_desc:"Richwealth ટીમ સાથે રોજનું લાઇવ સત્ર. https://online.richwealth.in પર જોડાઓ"
+}};
+
+let L = 'en';
+const $ = id => document.getElementById(id);
+const store = { get(k){ try{return localStorage.getItem(k)}catch(e){return null} }, set(k,v){ try{localStorage.setItem(k,v)}catch(e){} } };
+const wa = txt => 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(txt);
+const pad = n => String(n).padStart(2,'0');
+
+function setLang(l){
+  L = T[l] ? l : 'en'; store.set('rw_online_lang', L);
+  document.documentElement.lang = L;
+  const t = T[L];
+  document.querySelectorAll('[data-t]').forEach(el => { const v = t[el.dataset.t]; if (typeof v === 'string') el.textContent = v; });
+  document.querySelectorAll('.langbar button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === L));
+  $('logo').src = L === 'en' ? 'logo-en.png' : 'logo-' + L + '.png';
+  $('topics').innerHTML = TOPIC_KEYS.map((k,i) => `<div class="topic${k==='qa'?' wide':''}"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg></div><h3>${t['t_'+k][0]}</h3><p>${t['t_'+k][1]}</p></div>`).join('');
+  $('steps').innerHTML = t.s.map((s,i) => `<li><b class="n">${i+1}</b><div><h3>${s[0]}</h3><p>${s[1]}</p></div></li>`).join('');
+  $('faq').innerHTML = t.faq.map(f => `<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('');
+  $('remind').href = wa(t.wa_remind);
+  $('cal').href = calLink();
+  $('gate').hidden = true;
+  tick();
+}
+
+/* IST helpers: IST = UTC + 5:30, no DST */
+function istParts(ms){ const d = new Date(ms + 330*60000); return { mins:d.getUTCHours()*60 + d.getUTCMinutes(), secs:d.getUTCSeconds(), y:d.getUTCFullYear(), m:d.getUTCMonth(), day:d.getUTCDate() }; }
+function istToMs(y,m,day,mins){ return Date.UTC(y,m,day,0,mins) - 330*60000; }
+
+function nextStartMs(now){
+  const p = istParts(now);
+  let s = istToMs(p.y,p.m,p.day,START_MIN);
+  if (now >= istToMs(p.y,p.m,p.day,END_MIN)) s += 864e5;
+  return s;
+}
+
+function calLink(){
+  const now = Date.now(), s = nextStartMs(now), e = s + (END_MIN-START_MIN)*60000;
+  const f = ms => new Date(ms).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+  const t = T[L];
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(t.cal_title) +
+    '&dates=' + f(s) + '/' + f(e) + '&ctz=Asia/Kolkata&recur=' + encodeURIComponent('RRULE:FREQ=DAILY') +
+    '&details=' + encodeURIComponent(t.cal_desc) + '&location=' + encodeURIComponent('https://online.richwealth.in');
+}
+
+function localLine(){
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+  if (/^Asia\/(Kolkata|Calcutta)$/.test(tz) || new Date().getTimezoneOffset() === -330) return '';
+  const p = istParts(Date.now());
+  const s = istToMs(p.y,p.m,p.day,START_MIN), e = istToMs(p.y,p.m,p.day,END_MIN);
+  const loc = { en:'en-IN', hi:'hi-IN', gu:'gu-IN' }[L];
+  const fmt = ms => new Date(ms).toLocaleTimeString(loc, { hour:'numeric', minute:'2-digit' });
+  return T[L].local.replace('{t}', fmt(s) + ' – ' + fmt(e) + (tz ? ' (' + tz.split('/').pop().replace(/_/g,' ') + ')' : ''));
+}
+
+function tick(){
+  const t = T[L], now = Date.now(), p = istParts(now);
+  const live = p.mins >= START_MIN && p.mins < END_MIN;
+  const early = !live && p.mins >= START_MIN - OPEN_EARLY && p.mins < START_MIN;
+  const st = $('status');
+  st.classList.toggle('live', live || early);
+  $('badgeTxt').textContent = live ? t.live : early ? t.soon : t.next;
+  if (live) $('slabel').textContent = t.lbl_live;
+  else {
+    const s = nextStartMs(now), left = Math.max(0, Math.floor((s - now)/1000));
+    $('slabel').textContent = p.mins < START_MIN ? t.lbl_today : t.lbl_tom;
+    $('cH').textContent = pad(Math.floor(left/3600)); $('cM').textContent = pad(Math.floor(left%3600/60)); $('cS').textContent = pad(left%60);
+  }
+  const href = MEET_URL || wa(t.wa_join);
+  $('join').href = $('dockJoin').href = href;
+  $('joinTxt').textContent = MEET_URL ? t.join : t.join_wa;
+  $('dockTxt').innerHTML = (live||early) ? `<span style="color:var(--live)">● ${t.dock_live}</span><small>3:00 – 5:00 PM IST</small>` : `${t.dock_next}<small>${$('slabel').textContent} ${$('cH').textContent}:${$('cM').textContent}:${$('cS').textContent}</small>`;
+  $('local').textContent = localLine();
+}
+
+/* dock appears once the main Join button scrolls away */
+new IntersectionObserver(([e]) => $('dock').classList.toggle('show', !e.isIntersecting)).observe($('join'));
+
+$('share').addEventListener('click', async () => {
+  const url = 'https://online.richwealth.in' + (L !== 'en' ? '/?lang=' + L : '');
+  const txt = T[L].share_txt;
+  if (navigator.share) { try { await navigator.share({ title:'Richwealth Online', text:txt, url }); return; } catch(e){ if (e.name === 'AbortError') return; } }
+  location.href = wa(txt + ' ' + url);
+});
+
+document.addEventListener('click', e => { const b = e.target.closest('[data-lang]'); if (b) setLang(b.dataset.lang); });
+
+const qs = new URLSearchParams(location.search).get('lang');
+const saved = qs || store.get('rw_online_lang');
+setLang(saved && T[saved] ? saved : 'en');
+if (!saved) $('gate').hidden = false;
+setInterval(tick, 1000);
+</script>
+</body>
+</html>
